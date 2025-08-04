@@ -1,5 +1,5 @@
 # telecomunicaciones
 fulltack project
 # Proyecto de Telecomunicaciones 
-# Wenseslao William Carevajal Caceres 
-# TAller de Aplicaciones de Internet
+# Wenseslao William Carvajal Caceres 
+# Taller de Aplicaciones de Internet
