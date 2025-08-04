@@ -1,0 +1,12 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Detalle extends Model
+{
+    //
+    Protected $table ='detalle';
+    protected $fillable=['nombre','precio','relacion con la marca'];
+}
