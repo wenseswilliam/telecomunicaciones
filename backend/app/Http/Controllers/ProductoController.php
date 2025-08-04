@@ -22,7 +22,18 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validacion post
+        $request->validate([
+            'nombre'=>'required',
+
+        ]);
+
+        $producto=producto::create($request->all());
+
+        return response()->json([
+            'mensaje'=>'Producto creado exitosamente',
+            'producto'=>$producto
+        ], 201 );
     }
 
     /**
@@ -30,7 +41,18 @@ class ProductoController extends Controller
      */
     public function show(string $id)
     {
-        //
+        //mostrar por id show
+        $producto=producto::find($id);
+        if(!$producto){
+            return response()->json(
+                [
+                    'mensaje'=>'categoria no encontrada'
+                ], 404
+                );
+        }
+
+return response()->json($producto,200);
+
     }
 
     /**
@@ -38,7 +60,28 @@ class ProductoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // actualizar
+        $producto=producto::find($id);
+        if(!$producto){
+            return response()->json(
+                [
+                    'mensaje'=>'categoria no encontrada'
+                ], 404
+                );
+        }
+            $request->validate([
+            'nombre'=>'required',
+
+        ]);
+        $producto->update($request->all());
+
+
+        return response()->json([
+            'mensaje'=>'Producto actualizada exitosamente',
+            'producto'=>$producto
+        ], 201 );
+
+
     }
 
     /**
@@ -46,6 +89,19 @@ class ProductoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // eliminar
+         $producto=producto::find($id);
+          if(!$producto){
+            return response()->json(
+                [
+                    'mensaje'=>'categoria no encontrada'
+                ], 404
+                );
+        }
+
+        $producto->delete();
+        return response()->json([
+            'mensaje'=>'Categoria eliminada exitosamente'
+        ], 200);
     }
 }
